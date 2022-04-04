@@ -1,15 +1,35 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <product-card v-for="producto in listaProductos" :key="producto.id" :producto = "producto"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductCard from './components/ProductCard.vue'
+
+export default {
+  name: "listaProductos" ,
+  productos: [
+    {
+      id:1,
+      nombre: "palmera",
+      peso: 425,
+      precio: 1.75,
+      imagen: "https://prod-mercadona.imgix.net/images/5e949a6f64b52be230b8f1084156dcd9.jpg?fit=crop&h=300&w=300",
+    },
+    {
+      id:2,
+      nombre: "palmera2",
+      peso: 425,
+      precio: 1.75,
+      imagen: "https://prod-mercadona.imgix.net/images/5e949a6f64b52be230b8f1084156dcd9.jpg?fit=crop&h=300&w=300",
+    }
+  ]
+};
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProductCard
   }
 }
 </script>
