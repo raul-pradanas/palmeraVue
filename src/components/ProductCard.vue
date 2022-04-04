@@ -7,22 +7,22 @@
         <span>{{producto.precio}}€</span>
         <span> /ud.</span>
       </span>
-      <button v-if="unidades < 1" class="boton" type="button" onClick={aumentaUnidades()}>
+      <button v-if="unidades < 1" class="boton" type="button" v-on="contador += 1">
         Añadir al carro
       </button>
         <div class="flexRow" v-if="unidades > 0">
           <div class="flexCompra">
             <span class="enCarro"> En carro </span>
             <span class="unidadesEnCarro">
-              <span>{{unidades}}</span>
+              <span>{{contador}}</span>
               <span> ud.</span>
             </span>
           </div>
           <div class="flexBotones">
-            <button class="botonAñadirUnidad" type="button" onClick = {aumentaUnidades()}>
+            <button class="botonAñadirUnidad" type="button" v-on="contador += 1">
               +ud
             </button>
-            <button class="botonEliminarUnidad" type="button" onClick = {disminuyeUnidades()}>
+            <button class="botonEliminarUnidad" type="button" v-on="contador -= 1">
               -ud
             </button>
           </div>
@@ -32,25 +32,22 @@
 
 <script>
 
-new Vue({
-  data: {
-    unidades: 0
-  },
-  aumentaUnidades: function() {
-    unidades = unidades + 1;
-  },
-  disminuyeUnidades: function() {
-    unidades = unidades - 1;
-  }
-})
-
 export default {
   name: 'ProductCard',
   props: {
     type: Object,
     default: null,
-  },
+  }
 }
+
+// eslint-disable-next-line no-undef
+new Vue({
+  data(){
+    return{
+      contador: 0
+    }
+  }
+})
 
 </script>
 
